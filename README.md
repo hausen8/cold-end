@@ -20,7 +20,7 @@ Installation of SSD1306 or SH1106 OLED display:
 
 ATTENTION: Refreshing the screen takes some milliseconds and freezes the loop for this time.
 In rare cases it may happen that the coolant or spit value jumps between numbers.
-To avoid a jumping value to interrupt the loop, turn the potentiometer slightly into one direction.
+To avoid jumping values to interrupt the loop, turn the potentiometer slightly into one direction.
 
 NOTE: If your stepper speed is too high and you have already set your microsteps to maximum,
 decrease "mist_min_flow_rate" and "mist_max_flow_rate" since they define the stepper timing.
