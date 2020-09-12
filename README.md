@@ -3,17 +3,17 @@ Firmware for ColdEND controller supporting SSD1306 and SH1106 OLED displays
 
 Installation of SSD1306 or SH1106 OLED display:
 
-1) Import https://github.com/adafruit/Adafruit-GFX-Library and https://github.com/adafruit/Adafruit_BusIO.
-   For SSD1306 OLED, import https://github.com/adafruit/Adafruit_SSD1306
-   For SH1106 OLED, import https://github.com/wonho-maker/Adafruit_SH1106
+1) Import https://github.com/adafruit/Adafruit-GFX-Library and https://github.com/adafruit/Adafruit_BusIO. 
+   For SSD1306 OLED, import https://github.com/adafruit/Adafruit_SSD1306. 
+   For SH1106 OLED, import https://github.com/wonho-maker/Adafruit_SH1106.
 
-2) Uncomment (define) the appropriate OLED display in config.h. Note that only one display
-   at one time is allowed so dont' forget to comment the other one.
+2) Uncomment (define) the appropriate OLED display in config.h. Note that only one display at one time 
+   is allowed so dont' forget to comment the other one.
 
-3) Flash your ColdEND, vent the system, make sure that the mist knob is fully turned clockwise
-   for maximum lubrication and turn the spit knob fully counterclockwise to deactivate spit mode.
-   Meter your lubrication output over 15 minutes and multiply the value by 4 to get the maximum
-   quantity in milliliter per hour. Do the same with mist knob fully turned counterclockwise
+3) Flash your ColdEND, vent the system, make sure that the mist knob is fully turned clockwise 
+   for maximum lubrication and turn the spit knob fully counterclockwise to deactivate spit mode. 
+   Meter your lubrication output over 15 minutes and multiply the value by 4 to get the maximum 
+   quantity in milliliter per hour. Do the same with mist knob fully turned counterclockwise 
    to get the minimum quantity in milliliter per hour.
 
 4) Edit "min_ml_per_hour" and "max_ml_per_hour" in config.h to the correct values and reflash your ColdEND.
