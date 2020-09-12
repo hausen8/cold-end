@@ -3,8 +3,9 @@ Firmware for ColdEND controller supporting SSD1306 and SH1106 OLED displays
 
 Installation of SSD1306 or SH1106 OLED display:
 
-1) Import Adafruit-GFX-Library and either Adafruit_SSD1306 or Adafruit_SH1106
-   depending on which OLED display you plan to use.
+1) Import https://github.com/adafruit/Adafruit-GFX-Library and https://github.com/adafruit/Adafruit_BusIO.
+   For SSD1306 OLED, import https://github.com/adafruit/Adafruit_SSD1306
+   For SH1106 OLED, import https://github.com/wonho-maker/Adafruit_SH1106
 
 2) Uncomment (define) the appropriate OLED display in config.h. Note that only one display
    at one time is allowed so dont' forget to comment the other one.
