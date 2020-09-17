@@ -1,6 +1,6 @@
 /*
 
-  ColdEND v1.1 Minimum Quantity Lubrication
+  ColdEND v1.2 Minimum Quantity Lubrication
   https://www.end-cnc-shop.de/geloetetes/3/pumpen-steuerung-1.5-bauteile-set
 
   Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
@@ -10,6 +10,7 @@
   Daniel Seoane / SeoGeo
 
   Rewritten by Tilman, 2020-09-08
+  Last edited: 2020-09-17
 
 */
 
@@ -29,19 +30,20 @@
 
 
 // Mist and spit
-#define mist_min_flow_rate 6000             // Minimum coolant flow rate (max. delay time between step LOW and HIGH)
-#define mist_max_flow_rate 50               // Maximum coolant flow rate (min. delay time between step LOW and HIGH)
+#define max_flow_rate 50                    // Maximum coolant flow rate (min. delay time between step LOW and HIGH)
 #define fast_flow_rate 100                  // Fast mode flow rate value
 #define spit_flow_rate 100                  // Spit mode flow rate value
 #define spit_min_time 1000                  // Spit mode minimum time in milliseconds
 #define spit_max_time 8000                  // Spit mode maximum time in milliseconds
-#define min_ml_per_hour 10                  // Minimum milliliter per hour (needs to be metered before)
+#define min_ml_per_hour 1                   // Minimum milliliter per hour
 #define max_ml_per_hour 150                 // Maximum milliliter per hour (needs to be metered before)
 
 
-// Switches and potentiometers
+// Operator control
 #define switch_debounce 30                  // Delay time in milliseconds to debounce switch
-#define smooth_filter 0.1                   // Filter to smooth potentiometer values
+// #define linear_control                      // Choose between linear and exponential flow control
+#define smooth_filter 0.05                  // Exponential filter to smooth potentiometer values
+#define screen_delay 500                    // Minimum delay between two screen refreshes in milliseconds
 
 
 // Display
