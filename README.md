@@ -30,10 +30,10 @@ In this case, increase "switch_debounce" slightly.
 
 **HISTORY:**
 
-- 1.2 Choice between exponential and linear flow control and simplified calibration process. 
-      Added screen refresh delay to minimize loop interrupts by screen refreshes.
-      Single-digits for coolant flow (exponential flow control < 10 ml/h: decimal digits).
+- v1.2: Choice between exponential and linear flow control and simplified calibration process. 
+        Added screen refresh delay to minimize loop interrupts by screen refreshes.
+        Single-digits for coolant flow (exponential flow control < 10 ml/h: decimal digits).
 
-- 1.1 Moved all configurable parameters to config.h and added "min_ml_per_hour" for a more accurate display value.
+- v1.1: Moved all configurable parameters to config.h and added "min_ml_per_hour" for a more accurate display value.
 
-- 1.0 Initial rewritten firmware, supporting I2C SSD1306 and SH1106 OLED displays with 128x64 px.
+- v1.0: Initial rewritten firmware, supporting I2C SSD1306 and SH1106 OLED displays with 128x64 px.
