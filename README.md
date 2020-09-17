@@ -28,7 +28,8 @@ you will need to repeat steps 3 and 4 to calibrate the displayed quantity.
 NOTE: If spit mode at times does not start, it is most likely that your mist switch is bouncing.
 In this case, increase "switch_debounce" slightly.
 
-History:
+
+HISTORY:
 
 1.2 Choice between exponential and linear flow control and simplified calibration process.
     Added screen refresh delay to minimize loop interrupts by screen refreshes.
