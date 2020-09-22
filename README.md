@@ -31,6 +31,12 @@ In this case, increase "switch_debounce" slightly.
 
 **HISTORY:**
 
+- v1.3:  // new motor control  
+         // display refresh overall
+         // countdown in spit mod
+         // animated pump icon
+         // TimerOne.h  library necessary !!
+
 - v1.2: Choice between exponential and linear flow control and simplified calibration process. 
         Added screen refresh delay to minimize loop interrupts by screen refreshes.
         Single-digits for coolant flow (exponential flow control < 10 ml/h: decimal digits).
