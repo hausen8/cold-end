@@ -33,7 +33,7 @@ In this case, increase "switch_debounce" slightly.
 
 - v1.3:     // new motor control    
             // display refresh overall 
-            // countdown in spit mod   
+            // countdown in spit mod      
             // animated pump icon   
             // TimerOne.h  library necessary !! 
 
