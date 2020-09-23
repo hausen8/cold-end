@@ -155,7 +155,6 @@ void spitMode() {
 
 void moveStepper(long delay) {
   // Open mist valve and run stepper at desired speed
-  // Speed is defined by delays between step HIGH and step LOW
   digitalWrite(outMistValve, LOW);
   digitalWrite(outEna, LOW);
   Timer1.pwm(outStep, 512, delay);
