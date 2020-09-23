@@ -24,7 +24,7 @@ Installation of SSD1306 or SH1106 OLED display:
 decrease "max_flow_rate" which defines the stepper timing. After changing the value, you will
 need to repeat steps 3 and 4 to calibrate the displayed quantity.
 
-Value | frequency | rpm
+Value | Frequency | rpm
 ------|-----------|----
 500000 |     1 Hz |  0,0185 rpm
 250000 |     2 Hz |  0,0370 rpm
