@@ -31,7 +31,7 @@ In this case, increase "switch_debounce" slightly.
 
 - v1.4: Minor fixes
 
-- v1.3: New motor control based on hardware timer, fast display refresh rate, countdown in spit mode,
+- v1.3: New motor control based on hardware timer, fast display refresh rate, countdown in spit mode
         and animated pump icon added by Talla83.de
 
 - v1.2: Choice between exponential and linear flow control and simplified calibration process.
