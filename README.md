@@ -20,6 +20,9 @@ Installation of SSD1306 or SH1106 OLED display:
 
 **ATTENTION:** Up from v1.3, https://github.com/PaulStoffregen/TimerOne library is required!
 
+**NOTE:** If spit mode at times does not start, it is most likely that your mist switch is bouncing.
+In this case, increase "switch_debounce" slightly.
+
 **NOTE:** If your stepper speed is too high and you have already set your microsteps to maximum,
 decrease "max_flow_rate" which defines the stepper timing. After changing the value, you will
 need to repeat steps 3 and 4 to calibrate the displayed quantity.
@@ -42,9 +45,6 @@ Value | Frequency | rpm
    125 |  4000 Hz | 74,000 rpm
    100 |  5000 Hz | 93,750 rpm
 
-
-**NOTE:** If spit mode at times does not start, it is most likely that your mist switch is bouncing.
-In this case, increase "switch_debounce" slightly.
 
 **HISTORY:**
 
