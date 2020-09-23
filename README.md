@@ -41,7 +41,7 @@ Value | frequency | rpm
    250 |  2000 Hz | 37,000 rpm
    125 |  4000 Hz | 74,000 rpm
    100 |  5000 Hz | 93,750 rpm
-    50 | 10000 Hz | 187,500 rpm
+
 
 **NOTE:** If spit mode at times does not start, it is most likely that your mist switch is bouncing.
 In this case, increase "switch_debounce" slightly.
