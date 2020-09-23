@@ -24,6 +24,25 @@ Installation of SSD1306 or SH1106 OLED display:
 decrease "max_flow_rate" which defines the stepper timing. After changing the value, you will
 need to repeat steps 3 and 4 to calibrate the displayed quantity.
 
+Value | frequency | rpm
+------|-----------|----
+500000 |     1 Hz |  0,0185 rpm
+250000 |     2 Hz |  0,0370 rpm
+100000 |     5 Hz |  0,093 rpm
+ 50000 |    10 Hz |  0,187 rpm
+ 25000 |    20 Hz |  0,375 rpm
+ 12500 |    40 Hz |  0,750 rpm
+  6250 |    80 Hz |  1,500 rpm
+  5000 |   100 Hz |  1,875 rpm
+  3125 |   160 Hz |  3,000 rpm
+  1500 |   333 Hz |  6,243 rpm
+  1000 |   500 Hz |  9,250 rpm
+   500 |  1000 Hz | 18,500 rpm
+   250 |  2000 Hz | 37,000 rpm
+   125 |  4000 Hz | 74,000 rpm
+   100 |  5000 Hz | 93,750 rpm
+    50 | 10000 Hz | 187,50 rpm
+
 **NOTE:** If spit mode at times does not start, it is most likely that your mist switch is bouncing.
 In this case, increase "switch_debounce" slightly.
 
