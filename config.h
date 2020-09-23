@@ -32,10 +32,7 @@
 
 
 // Mist and spit
-// max_flow_rate 1900 = 0,40 to 61 rpm (1/16 microstepping)
-// max_flow_rate 1000 = 0,48 to 74 rpm (1/16 microstepping)
-// max_flow_rate  500 = 0,96 to 148 rpm (1/16 microstepping)
-#define max_flow_rate 500UL                 // Maximum coolant flow rate (see table above)
+#define max_flow_rate 500UL                 // Maximum coolant flow rate (see table in README.md)
 #define fast_flow_rate 80                   // Fast mode flow rate value 80= 115rpm /125=74rpm / 250=37rpm
 #define spit_flow_rate 80                   // Spit mode flow rate value 80= 115rpm /125=74rpm / 250=37rpm
 #define spit_min_time 1000                  // Spit mode minimum time in milliseconds
