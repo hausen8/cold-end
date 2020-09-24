@@ -306,11 +306,11 @@ void readSpitPot() {
   }
 
 
-  void drawPump(int pump, int mode){
+  void drawPump(int pump, int mode) {
     // Draw spinning pump icon
     display.drawCircle(icon_center_x, icon_center_y, 5, WHITE);
-    y= (3*cos(pi-(2*pi)/60*pump))+icon_center_y;
-    x =(3*sin(pi-(2*pi)/60*pump))+icon_center_x;
+    y = (3*cos(pi-(2*pi)/60*pump))+icon_center_y;
+    x = (3*sin(pi-(2*pi)/60*pump))+icon_center_x;
     if (mode == 1) {
       display.fillCircle(x, y, 2, WHITE);
     }
