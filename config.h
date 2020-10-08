@@ -12,7 +12,7 @@
   Rewritten by Tilman, 2020-09-08
   New motor control, fast screen refresh rate and other features added by Talla83.de, 2020-09-21
 
-  Last edited: 2020-09-23
+  Last edited: 2020-10-08
 
 */
 
@@ -32,7 +32,7 @@
 
 
 // Mist and spit
-#define max_flow_rate 500UL                 // Maximum coolant flow rate (see table in README.md)
+#define max_flow_rate 125UL                 // Maximum coolant flow rate (see table in README.md)
 #define fast_flow_rate 80                   // Fast mode flow rate value 80= 115rpm /125=74rpm / 250=37rpm
 #define spit_flow_rate 80                   // Spit mode flow rate value 80= 115rpm /125=74rpm / 250=37rpm
 #define spit_min_time 1000                  // Spit mode minimum time in milliseconds
@@ -42,10 +42,17 @@
 
 
 // Operator control
-#define switch_debounce 30                  // Delay time in milliseconds to debounce switch
 // #define linear_control                      // Choose between linear and exponential flow control
 #define smooth_filter 0.05                  // Exponential filter to smooth potentiometer values
 #define screen_delay 100                    // Minimum delay between two screen refreshes in milliseconds
+#define switch_debounce 30                  // Delay time in milliseconds to debounce switch
+#define momentary_switch                    // Choose between normal switches and momentary switches
+
+#ifdef momentary_switch
+  #include <Bounce2.h>                      // Required library: https://github.com/thomasfredericks/Bounce2
+  Bounce btnMist = Bounce(inMist, switch_debounce);
+  Bounce btnAir = Bounce(inAir, switch_debounce);
+#endif
 
 
 // Display
