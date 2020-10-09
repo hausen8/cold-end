@@ -12,7 +12,7 @@
   Rewritten by Tilman, 2020-09-08
   New motor control, fast screen refresh rate and other features added by Talla83.de, 2020-09-21
 
-  Last edited: 2020-10-08
+  Last edited: 2020-10-10
 
 */
 

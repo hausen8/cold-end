@@ -12,7 +12,7 @@
   Rewritten by Tilman, 2020-09-08
   New motor control, fast screen refresh rate and other features added by Talla83.de, 2020-09-21
 
-  Last edited: 2020-10-08
+  Last edited: 2020-10-10
 
 */
 
@@ -118,9 +118,9 @@ void loop() {
   if (digitalRead(inFast) == LOW) {         // Switch to fast mode (overrides normal operation)
     moveStepper(fast_flow_rate);
   }
-  else if (mist_stat == LOW) {              // Open air valve, check for spit mode and switch to normal operation
+  else if (mist_stat == LOW) {              // Switch air mode or mist mode, depending on coolant output
     openAirValve();
-    if (mist_pot_val > 1) {
+    if (mist_pot_val > 1) {                 // If coolant > 1 ml/h, , check for spit mode and switch to normal operation
       spitMode();
       moveStepper(mist_flow_rate);
     }
@@ -142,29 +142,35 @@ void loop() {
 void spitMode() {
   // Spit mode, check for conditions and run for a predefined time
   if (spit_stat == 0 && spit_time > spit_min_time) {
-    #ifdef oled
-      air_valve = 1;
-      spit_mode = 1;
-      prepareDisplay();
-    #endif
-
     delay(switch_debounce);
     spit_start = millis();
     spit_stop = spit_start + spit_time;
-    while ((mist_stat == LOW) && (millis() < spit_stop)) {
-      moveStepper(spit_flow_rate);
-      if (millis() > spit_start + 1000){
+    while (millis() < spit_stop) {          // Spit loop
+      moveStepper(spit_flow_rate);          // Move stepper with spit flow rate
+      
+      if (millis() > spit_start + 1000){    // Spit countdown in seconds
         spit_start = millis();
         spit_pot_val--;
       }
-      #ifdef oled
+      
+      #ifdef oled                           // Force display refresh
         readMistPot();
         prepareDisplay();
       #endif
+      
+      #ifdef momentary_switch               // Force check if mist mode is still active
+        checkMistStat();
+      #else
+        mist_stat = digitalRead(inMist);
+      #endif
+      
+      if (mist_stat == HIGH) {              // Interrupt loop if mist mode has been stopped
+        break;
+      }
     }
-    spit_mode = 0;
+    spit_mode = 0;                          // Reset active spit mode flag
   }
-  spit_stat = 1;
+  spit_stat = 1;                            // Flag indicating that spit mode has been executed
 }
 
 
@@ -176,6 +182,13 @@ void moveStepper(long delay) {
   if (!spit_mode){
     mist_valve = 1;
   }
+}
+
+
+void stopStepper() {
+  digitalWrite(outEna, HIGH);
+  digitalWrite(outMistValve, HIGH);
+  mist_valve = 0;
 }
 
 
@@ -191,13 +204,6 @@ void callback() {
       iconvalue++;
     }
   }
-}
-
-
-void stopStepper() {
-  digitalWrite(outEna, HIGH);
-  digitalWrite(outMistValve, HIGH);
-  mist_valve = 0;
 }
 
 
@@ -271,35 +277,6 @@ void readSpitPot() {
       }
     }
   }
-
-  /*
-  void checkMistStat() {
-    while(digitalRead(inMist) == LOW) {
-      delay(switch_debounce);
-      if (digitalRead(inMist) == LOW) {
-        if (mist_stat == HIGH) {
-          mist_stat = LOW;
-        }
-        else {
-          mist_stat = HIGH;
-        }
-      }
-    }
-  }
-
-  
-  void checkAirStat() {
-    while(digitalRead(inAir) == LOW) {
-      delay(switch_debounce);
-      if (air_stat == HIGH) {
-        air_stat = LOW;
-      }
-      else {
-        air_stat = HIGH;
-      }
-    }
-  }
-  */
 #endif
 
 
