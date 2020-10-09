@@ -1,7 +1,7 @@
 # cold-end
 Firmware for ColdEND controller supporting SSD1306 and SH1106 OLED displays
 
-Installation of SSD1306 or SH1106 OLED display:
+Installation and configuration:
 
 1) Import https://github.com/adafruit/Adafruit-GFX-Library and either
    https://github.com/adafruit/Adafruit_SSD1306 or https://github.com/wonho-maker/Adafruit_SH1106
@@ -10,24 +10,21 @@ Installation of SSD1306 or SH1106 OLED display:
 2) Uncomment (define) the appropriate OLED display in config.h. Note that only one display
    at one time is allowed so dont' forget to comment the other one.
 
-3) Flash your ColdEND, vent the system, make sure that the mist knob is fully turned clockwise
-   for maximum lubrication and turn the spit knob fully counterclockwise to deactivate spit mode.
-   Meter your lubrication output over 15 minutes and multiply the value by 4 to get the maximum
-   quantity in milliliter per hour.
+3) Uncomment (define) "momentary_switch" if you want to use monentary switches.
 
-4) Edit "max_ml_per_hour" in config.h to the correct values and reflash your ColdEND.
+4) Flash your ColdEND controller, vent the system and try the coolant potentiometer range.
+   If your coolant output is too high and you have already set your microsteps to maximum,
+   decrease "max_flow_rate" and reflash the ColdEND controller. The table below shows you
+   how values and stepper RPM correlate.
+
+5) Make sure that the coolant knob is fully turned clockwise for maximum lubrication and turn
+   the spit knob fully counterclockwise to deactivate spit mode. Meter your lubrication output
+   over 15 minutes and multiply the value by 4 to get the maximum quantity in milliliter per hour.
+
+6) Edit "max_ml_per_hour" in config.h to the correct values and reflash your ColdEND.
 
 
-**ATTENTION:** Up from v1.3, https://github.com/PaulStoffregen/TimerOne library is required!
-
-**NOTE:** If spit mode at times does not start, it is most likely that your mist switch is bouncing.
-In this case, increase "switch_debounce" slightly.
-
-**NOTE:** If your stepper speed is too high and you have already set your microsteps to maximum,
-decrease "max_flow_rate" which defines the stepper timing. After changing the value, you will
-need to repeat steps 3 and 4 to calibrate the displayed quantity.
-
-Value | Frequency | rpm
+Value | Frequency | RPM
 ------|-----------|----
 500000 |     1 Hz |  0,0185 rpm
 250000 |     2 Hz |  0,0370 rpm
@@ -46,7 +43,21 @@ Value | Frequency | rpm
    100 |  5000 Hz | 93,750 rpm
 
 
+**ATTENTION:** Up from v1.3, https://github.com/PaulStoffregen/TimerOne library is required!
+
+**NOTE:** If momentary switches are defined, https://github.com/thomasfredericks/Bounce2 library is required.
+
+**NOTE:** If spit mode at times does not start or any of your switches seem to work not properly,
+it is most likely that they are bouncing. In this case, increase "switch_debounce" slightly.
+
+
 **HISTORY:**
+
+- v1.6: Fixed mist mode can't be stopped by switch
+
+- v1.5: Added choice between normal switches and momentary switches.
+        When coolant is set below 1.1 ml/h, pump will now be stopped and coolant valve closed
+        which makes air button obsolet. Fixed bouncing relais when powering on.
 
 - v1.4: Minor fixes
 
