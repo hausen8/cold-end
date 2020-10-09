@@ -12,7 +12,7 @@
   Rewritten by Tilman, 2020-09-08
   New motor control, fast screen refresh rate and other features added by Talla83.de, 2020-09-21
 
-  Last edited: 2020-10-10
+  Last edited: 2020-10-08
 
 */
 
@@ -145,32 +145,20 @@ void spitMode() {
     delay(switch_debounce);
     spit_start = millis();
     spit_stop = spit_start + spit_time;
-    while (millis() < spit_stop) {          // Spit loop
-      moveStepper(spit_flow_rate);          // Move stepper with spit flow rate
-      
-      if (millis() > spit_start + 1000){    // Spit countdown in seconds
+    while ((mist_stat == LOW) && millis() < spit_stop) {
+      moveStepper(spit_flow_rate);
+      if (millis() > spit_start + 1000){
         spit_start = millis();
         spit_pot_val--;
       }
-      
-      #ifdef oled                           // Force display refresh
+      #ifdef oled
         readMistPot();
         prepareDisplay();
       #endif
-      
-      #ifdef momentary_switch               // Force check if mist mode is still active
-        checkMistStat();
-      #else
-        mist_stat = digitalRead(inMist);
-      #endif
-      
-      if (mist_stat == HIGH) {              // Interrupt loop if mist mode has been stopped
-        break;
-      }
     }
-    spit_mode = 0;                          // Reset active spit mode flag
+    spit_mode = 0;
   }
-  spit_stat = 1;                            // Flag indicating that spit mode has been executed
+  spit_stat = 1;
 }
 
 
@@ -182,13 +170,6 @@ void moveStepper(long delay) {
   if (!spit_mode){
     mist_valve = 1;
   }
-}
-
-
-void stopStepper() {
-  digitalWrite(outEna, HIGH);
-  digitalWrite(outMistValve, HIGH);
-  mist_valve = 0;
 }
 
 
@@ -204,6 +185,13 @@ void callback() {
       iconvalue++;
     }
   }
+}
+
+
+void stopStepper() {
+  digitalWrite(outEna, HIGH);
+  digitalWrite(outMistValve, HIGH);
+  mist_valve = 0;
 }
 
 
@@ -277,6 +265,35 @@ void readSpitPot() {
       }
     }
   }
+
+  /*
+  void checkMistStat() {
+    while(digitalRead(inMist) == LOW) {
+      delay(switch_debounce);
+      if (digitalRead(inMist) == LOW) {
+        if (mist_stat == HIGH) {
+          mist_stat = LOW;
+        }
+        else {
+          mist_stat = HIGH;
+        }
+      }
+    }
+  }
+
+  
+  void checkAirStat() {
+    while(digitalRead(inAir) == LOW) {
+      delay(switch_debounce);
+      if (air_stat == HIGH) {
+        air_stat = LOW;
+      }
+      else {
+        air_stat = HIGH;
+      }
+    }
+  }
+  */
 #endif
 
 

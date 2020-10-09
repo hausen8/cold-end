@@ -46,7 +46,7 @@
 #define smooth_filter 0.05                  // Exponential filter to smooth potentiometer values
 #define screen_delay 100                    // Minimum delay between two screen refreshes in milliseconds
 #define switch_debounce 30                  // Delay time in milliseconds to debounce switch
-#define momentary_switch                    // Choose between normal switches and momentary switches
+// #define momentary_switch                    // Choose between normal switches and momentary switches
 
 #ifdef momentary_switch
   #include <Bounce2.h>                      // Required library: https://github.com/thomasfredericks/Bounce2
