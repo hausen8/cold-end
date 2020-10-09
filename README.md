@@ -53,7 +53,7 @@ it is most likely that they are bouncing. In this case, increase "switch_debounc
 
 **HISTORY:**
 
-- v1.6: Fixed mist mode can't be stopped by switch
+- v1.6: Fixed spit mode can't be interrupted by switch
 
 - v1.5: Added choice between normal switches and momentary switches.
         When coolant is set below 1.1 ml/h, pump will now be stopped and coolant valve closed
