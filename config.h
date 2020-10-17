@@ -1,6 +1,6 @@
 /*
 
-  ColdEND v1.4 Minimum Quantity Lubrication
+  ColdEND v1.5 Minimum Quantity Lubrication
   https://www.end-cnc-shop.de/geloetetes/3/pumpen-steuerung-1.5-bauteile-set
 
   Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
