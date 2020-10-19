@@ -68,7 +68,7 @@ it is most likely that they are bouncing. In this case, increase "switch_debounc
 
 **HISTORY:**
 
-- v1.7: Added support for 2x HT16K33 7 segment LED displays. Ready for new ColdEND PUMPBoard PRO
+- v1.7: Added support for 2x HT16K33 7-segment LED displays. Ready for new ColdEND PUMPBoard PRO
 
 - v1.6: Fixed spit mode can't be interrupted by switch
 
