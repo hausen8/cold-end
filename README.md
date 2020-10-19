@@ -1,16 +1,29 @@
 # cold-end
-Firmware for ColdEND controller supporting SSD1306 and SH1106 OLED displays
+Firmware for ColdEND controller supporting various displays
 
 Installation and configuration:
 
-1) Import https://github.com/adafruit/Adafruit-GFX-Library and either
-   https://github.com/adafruit/Adafruit_SSD1306 or https://github.com/wonho-maker/Adafruit_SH1106
-   depending on which OLED display you plan to use. So far, only 128x64 px are supported.
+1) Download and import the following libraries depending on your displays:
 
-2) Uncomment (define) the appropriate OLED display in config.h. Note that only one display
-   at one time is allowed so dont' forget to comment the other one.
+   **SSD1306**
+   https://github.com/adafruit/Adafruit-GFX-Library
+   https://github.com/adafruit/Adafruit_SSD1306
+
+   **SH1106**
+   https://github.com/adafruit/Adafruit-GFX-Library
+   https://github.com/wonho-maker/Adafruit_SH1106
+
+   **HT16K33**
+   https://github.com/adafruit/Adafruit_LED_Backpack
+
+2) Uncomment (define) the appropriate display in config.h. Note that only one type of
+   display at one time is allowed so dont' forget to comment the other ones.
+   For 7 segment LED displays, don't forget to jumper different I2C addresses for both
+   displays and enter these values in config.h ("LED1_ADD" and "LED2_ADD").
 
 3) Uncomment (define) "momentary_switch" if you want to use monentary switches.
+   Required library: https://github.com/thomasfredericks/Bounce2
+   For normal switches leave "momentary_switch" commented.
 
 4) Flash your ColdEND controller, vent the system and try the coolant potentiometer range.
    If your coolant output is too high and you have already set your microsteps to maximum,
@@ -19,9 +32,9 @@ Installation and configuration:
 
 5) Make sure that the coolant knob is fully turned clockwise for maximum lubrication and turn
    the spit knob fully counterclockwise to deactivate spit mode. Meter your lubrication output
-   over 15 minutes and multiply the value by 4 to get the maximum quantity in milliliter per hour.
+   over 10 minutes and multiply the value by 6 to get the maximum quantity in milliliter per hour.
 
-6) Edit "max_ml_per_hour" in config.h to the correct values and reflash your ColdEND.
+6) Edit "max_ml_per_hour" in config.h to the correct value and reflash your ColdEND.
 
 
 Value | Frequency | RPM
@@ -43,6 +56,8 @@ Value | Frequency | RPM
    100 |  5000 Hz | 93,750 rpm
 
 
+**ATTENTION:** ColdEND PUMPBoard PRO requires firmware v1.7 or higher! Dont' forget to uncomment the Board.
+
 **ATTENTION:** Up from v1.3, https://github.com/PaulStoffregen/TimerOne library is required!
 
 **NOTE:** If momentary switches are defined, https://github.com/thomasfredericks/Bounce2 library is required.
@@ -52,6 +67,8 @@ it is most likely that they are bouncing. In this case, increase "switch_debounc
 
 
 **HISTORY:**
+
+- v1.7: Added support for 2x HT16K33 7 segment LED displays. Ready for new ColdEND PUMPBoard PRO
 
 - v1.6: Fixed spit mode can't be interrupted by switch
 
