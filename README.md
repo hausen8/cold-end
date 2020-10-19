@@ -6,11 +6,11 @@ Installation and configuration:
 1) Download and import the following libraries depending on your displays:
 
    **SSD1306**
-   https://github.com/adafruit/Adafruit-GFX-Library
+   https://github.com/adafruit/Adafruit-GFX-Library and
    https://github.com/adafruit/Adafruit_SSD1306
 
    **SH1106**
-   https://github.com/adafruit/Adafruit-GFX-Library
+   https://github.com/adafruit/Adafruit-GFX-Library and
    https://github.com/wonho-maker/Adafruit_SH1106
 
    **HT16K33**
