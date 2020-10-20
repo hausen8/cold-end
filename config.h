@@ -1,6 +1,6 @@
 /*
 
-  ColdEND v1.7 Minimum Quantity Lubrication
+  ColdEND v1.8 Minimum Quantity Lubrication
   https://www.end-cnc-shop.de/geloetetes/3/pumpen-steuerung-1.5-bauteile-set
 
   Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
@@ -12,7 +12,7 @@
   Rewritten by Tilman, 2020-09-08
   New motor control, fast screen refresh rate and pump icon added by Talla83.de, 2020-09-21
 
-  Last edited by Tilman: 2020-10-19
+  Last edited by Tilman: 2020-10-20
 
 */
 
@@ -46,6 +46,8 @@
 #define screen_delay 100                    // Minimum delay between two screen refreshes in milliseconds
 #define switch_debounce 30                  // Delay time in milliseconds to debounce switch
 // #define momentary_switch                    // Choose between normal switches and momentary switches
+// #define ext_mist_ctrl                       // Uncomment to use Air switch for external mist control
+                                            // Attention: ext_mist_ctrl requires momentary switches!
 
 // ------------------------ CONFIGURATION END ---------------------------------------------------------------------
 
@@ -59,7 +61,7 @@
   #define outEna 4                          // Enable pin
   #define inFast 7                          // Fast switch
   #define inMist 6                          // Mist switch
-  #define inAir 5                           // Air switch
+  #define inAir 5                           // Air switch or external mist switch
   #define outAirValve 8                     // Air valve pin
   #define outMistValve 9                    // Mist valve pin
   #define outSpitLED 12                     // Spit LED pin
@@ -71,7 +73,7 @@
   #define outEna 4                          // Enable pin
   #define inFast 7                          // Fast switch
   #define inMist 8                          // Mist switch
-  #define inAir 9                           // Air switch
+  #define inAir 9                           // Air switch or external mist switch
   #define outAirValve 10                    // Air valve pin
   #define outMistValve 11                   // Mist valve pin
   #define outSpitLED 12                     // Spit LED pin
@@ -104,6 +106,11 @@
   #include <Adafruit_LEDBackpack.h>         // Required library: https://github.com/adafruit/Adafruit_LED_Backpack
   Adafruit_7segment mistDisplay = Adafruit_7segment();
   Adafruit_7segment spitDisplay = Adafruit_7segment();
+#endif
+
+
+#ifdef ext_mist_ctrl
+  #define momentary_switch
 #endif
 
 

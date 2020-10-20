@@ -6,11 +6,11 @@ Installation and configuration:
 1) Download and import the following libraries depending on your displays:
 
    **SSD1306**
-   https://github.com/adafruit/Adafruit-GFX-Library and
+   https://github.com/adafruit/Adafruit-GFX-Library
    https://github.com/adafruit/Adafruit_SSD1306
 
    **SH1106**
-   https://github.com/adafruit/Adafruit-GFX-Library and
+   https://github.com/adafruit/Adafruit-GFX-Library
    https://github.com/wonho-maker/Adafruit_SH1106
 
    **HT16K33**
@@ -68,7 +68,11 @@ it is most likely that they are bouncing. In this case, increase "switch_debounc
 
 **HISTORY:**
 
-- v1.7: Added support for 2x HT16K33 7-segment LED displays. Ready for new ColdEND PUMPBoard PRO
+- v1.8: Air switch input can now be used for external mist control. This can be achieved either with a
+        relais, an external switch or directly with a 24V output pin from a MESA card when the ColdEND controller
+        is connected to the same 24V power source.
+
+- v1.7: Added support for 2x HT16K33 7 segment LED displays. Ready for new ColdEND PUMPBoard PRO
 
 - v1.6: Fixed spit mode can't be interrupted by switch
 
