@@ -3,7 +3,7 @@ Firmware for ColdEND controller supporting various displays
 
 Installation and configuration:
 
-1) Download and import the following libraries depending on your displays:
+1) Download and import the following libraries depending on your display:
 
    **SSD1306**
    https://github.com/adafruit/Adafruit-GFX-Library
@@ -17,7 +17,7 @@ Installation and configuration:
    https://github.com/adafruit/Adafruit_LED_Backpack
 
 2) Uncomment (define) the appropriate display in config.h. Note that only one type of
-   display at one time is allowed so dont' forget to comment the other ones.
+   display at one time is allowed so don't forget to comment the other ones.
    For 7 segment LED displays, don't forget to jumper different I2C addresses for both
    displays and enter these values in config.h ("LED1_ADD" and "LED2_ADD").
 
@@ -62,7 +62,7 @@ Value | Frequency | RPM
 
 **NOTE:** If momentary switches are defined, https://github.com/thomasfredericks/Bounce2 library is required.
 
-**NOTE:** If spit mode at times does not start or any of your switches seem to work not properly,
+**NOTE:** If spit mode at times does not start or any of your switches seem to not work properly,
 it is most likely that they are bouncing. In this case, increase "switch_debounce" slightly.
 
 
