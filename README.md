@@ -3,7 +3,7 @@ Firmware for ColdEND controller supporting various displays
 
 Installation and configuration:
 
-1) Download and import the following libraries depending on your display:
+1) Download and import the following libraries depending on your displays:
 
    **SSD1306**
    https://github.com/adafruit/Adafruit-GFX-Library
@@ -16,8 +16,11 @@ Installation and configuration:
    **HT16K33**
    https://github.com/adafruit/Adafruit_LED_Backpack
 
+   **LCD 16x2 or 16x4**
+   https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
+
 2) Uncomment (define) the appropriate display in config.h. Note that only one type of
-   display at one time is allowed so don't forget to comment the other ones.
+   display at one time is allowed so dont' forget to comment the other ones.
    For 7 segment LED displays, don't forget to jumper different I2C addresses for both
    displays and enter these values in config.h ("LED1_ADD" and "LED2_ADD").
 
@@ -25,16 +28,20 @@ Installation and configuration:
    Required library: https://github.com/thomasfredericks/Bounce2
    For normal switches leave "momentary_switch" commented.
 
-4) Flash your ColdEND controller, vent the system and try the coolant potentiometer range.
+4) Uncomment (define) "drain_system" if you want to have the option to drain the coolant
+   pump and pipes anytime. For draining the system, set the coolant to 0 ml/h and push the
+   fast mode switch.
+
+5) Flash your ColdEND controller, vent the system and try the coolant potentiometer range.
    If your coolant output is too high and you have already set your microsteps to maximum,
    decrease "max_flow_rate" and reflash the ColdEND controller. The table below shows you
    how values and stepper RPM correlate.
 
-5) Make sure that the coolant knob is fully turned clockwise for maximum lubrication and turn
+6) Make sure that the coolant knob is fully turned clockwise for maximum lubrication and turn
    the spit knob fully counterclockwise to deactivate spit mode. Meter your lubrication output
    over 10 minutes and multiply the value by 6 to get the maximum quantity in milliliter per hour.
 
-6) Edit "max_ml_per_hour" in config.h to the correct value and reflash your ColdEND.
+7) Edit "max_ml_per_hour" in config.h to the correct value and reflash your ColdEND.
 
 
 Value | Frequency | RPM
@@ -62,23 +69,26 @@ Value | Frequency | RPM
 
 **NOTE:** If momentary switches are defined, https://github.com/thomasfredericks/Bounce2 library is required.
 
-**NOTE:** If spit mode at times does not start or any of your switches seem to not work properly,
+**NOTE:** If spit mode at times does not start or any of your switches seem to work not properly,
 it is most likely that they are bouncing. In this case, increase "switch_debounce" slightly.
 
 
 **HISTORY:**
 
+- v1.9: Added support for 16x2 and 16x4 LCD panel with I2C adaptor. Added function to drain coolant system
+        with fast mode button (reversed flow direction when coolant is set to 0)
+
 - v1.8: Air switch input can now be used for external mist control. This can be achieved either with a
         relais, an external switch or directly with a 24V output pin from a MESA card when the ColdEND controller
-        is connected to the same 24V power source.
+        is connected to the same 24V power source
 
-- v1.7: Added support for 2x HT16K33 7 segment LED displays. Ready for new ColdEND PUMPBoard PRO
+- v1.7: Added support for 2x HT16K33 7-segment LED displays. Ready for new ColdEND PUMPBoard PRO
 
 - v1.6: Fixed spit mode can't be interrupted by switch
 
 - v1.5: Added choice between normal switches and momentary switches.
         When coolant is set below 1.1 ml/h, pump will now be stopped and coolant valve closed
-        which makes air button obsolet. Fixed bouncing relais when powering on.
+        which makes air button obsolet. Fixed bouncing relais when powering on
 
 - v1.4: Minor fixes
 
@@ -87,8 +97,8 @@ it is most likely that they are bouncing. In this case, increase "switch_debounc
 
 - v1.2: Choice between exponential and linear flow control and simplified calibration process.
         Added screen refresh delay to minimize loop interrupts by screen refreshes.
-        Single-digits for coolant flow (exponential flow control < 10 ml/h: decimal digits).
+        Single-digits for coolant flow (exponential flow control < 10 ml/h: decimal digits)
 
-- v1.1: Moved all configurable parameters to config.h and added "min_ml_per_hour" for a more accurate display value.
+- v1.1: Moved all configurable parameters to config.h and added "min_ml_per_hour" for a more accurate display value
 
-- v1.0: Initial rewritten firmware, supporting I2C SSD1306 and SH1106 OLED displays with 128x64 px.
+- v1.0: Initial rewritten firmware, supporting I2C SSD1306 and SH1106 OLED displays with 128x64 px

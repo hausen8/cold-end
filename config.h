@@ -26,10 +26,8 @@
 // #define SSD1306                             // Uncomment for OLED with SSD1306 controller
 // #define SH1106                              // Uncomment for OLED with SH1106 controller
 // #define HT16K33                             // Uncomment for 7-Segment LED Display with HT16K33 Controller
-#define OLED_ADD 0x3C                       // I2C address of OLED display
-#define LED1_ADD 0x74                       // I2C address of first (mist) LED display (needs to be jumpered!)
-#define LED2_ADD 0x70                       // I2C address of second (spit) LED display (needs to be jumpered!)
-#define BRIGHTNESS 6                        // Brightness of LED displays
+// #define LCD16X2                             // Uncomment for 16x2 LCD or VFD with I2C Controller
+// #define LCD16X4                             // Uncomment for 16x4 LCD or VFD with I2C Controller
 
 // Mist and spit
 #define max_flow_rate 125UL                 // Maximum coolant flow rate (see table in README.md)
@@ -39,6 +37,7 @@
 #define spit_max_time 8000                  // Spit mode maximum time in milliseconds
 #define min_ml_per_hour 1                   // Minimum milliliter per hour
 #define max_ml_per_hour 250                 // Maximum milliliter per hour (needs to be metered before)
+// #define drain_system                        // Drain system with reversed fast mode when coolant is set to 0
 
 // Operator control
 // #define linear_control                      // Choose between linear and exponential flow control
@@ -82,6 +81,7 @@
 
 #ifdef SSD1306
   #define OLED
+  #define OLED_ADD 0x3C                     // I2C address of OLED display
   #include <Wire.h>
   #include <Adafruit_GFX.h>                 // Required library: https://github.com/adafruit/Adafruit-GFX-Library
   #include <Adafruit_SSD1306.h>             // Required library: https://github.com/adafruit/Adafruit_SSD1306
@@ -92,6 +92,7 @@
 
 #ifdef SH1106
   #define OLED
+  #define OLED_ADD 0x3C                     // I2C address of OLED display
   #include <Wire.h>
   #include <Adafruit_GFX.h>                 // Required library: https://github.com/adafruit/Adafruit-GFX-Library
   #include <Adafruit_SH1106.h>              // Required library: https://github.com/wonho-maker/Adafruit_SH1106
@@ -102,10 +103,26 @@
 
 #ifdef HT16K33
   #define LED
+  #define LED1_ADD 0x74                     // I2C address of first (mist) LED display (needs to be jumpered!)
+  #define LED2_ADD 0x70                     // I2C address of second (spit) LED display (needs to be jumpered!)
+  #define BRIGHTNESS 6                      // Brightness of LED displays
   #include <Wire.h>
   #include <Adafruit_LEDBackpack.h>         // Required library: https://github.com/adafruit/Adafruit_LED_Backpack
   Adafruit_7segment mistDisplay = Adafruit_7segment();
   Adafruit_7segment spitDisplay = Adafruit_7segment();
+#endif
+
+
+#if defined LCD16X2 || defined LCD16X4
+  #define LCD
+  #define LCD_ADD 0x27                      // I2C address of LCD controller.
+  #include <Wire.h>
+  #include <LiquidCrystal_I2C.h>            // Required library: https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
+  #ifdef LCD16X2
+    LiquidCrystal_I2C lcd(LCD_ADD, 16, 2);
+  #else
+    LiquidCrystal_I2C lcd(LCD_ADD, 16, 4);
+  #endif
 #endif
 
 
